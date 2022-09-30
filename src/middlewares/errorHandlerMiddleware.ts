@@ -1,19 +1,12 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
+import { AppError, errorTypeToStatusCode, isAppError } from "../utils/errorUtils.js";
 
-export function errorHandlerMiddleware(err: Error | any, req: Request, res: Response, next: NextFunction) {
-  console.log(err);
-  if (err.type) {
+export function errorHandlerMiddleware(err: Error | AppError, req: Request, res: Response, next: NextFunction) {
+  //Sconsole.log(err);
+
+  if (isAppError(err)) {
     return res.status(errorTypeToStatusCode(err.type)).send(err.message);
   }
 
   return res.sendStatus(500);
-}
-
-function errorTypeToStatusCode(errorType: string) {
-  if (errorType === 'unprocessable entity') return 422;
-  if (errorType === 'conflict') return 409;
-  if (errorType === 'not_found') return 404;
-  if (errorType === 'unauthorized') return 401;
-
-  return 400;
 }

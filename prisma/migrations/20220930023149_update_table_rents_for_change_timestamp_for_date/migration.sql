@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "rents" ALTER COLUMN "rentDate" SET DATA TYPE DATE,
+ALTER COLUMN "returnDate" SET DATA TYPE DATE;
