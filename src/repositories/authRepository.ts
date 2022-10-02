@@ -3,7 +3,7 @@ import { client } from "../databases/postgres.js";
 export async function verifyEmail(email: string) {
   return await client.users.findUnique({
     where: {
-      email: email,
+      email,
     },
   });
 }
