@@ -39,5 +39,11 @@ export async function signIn(body: signInBody) {
     expiresIn: 36000, //3h
   });
 
-  return token;
+  const info = {
+    token,
+    name: verifyEmail.name,
+    pictureUrl: verifyEmail.pictureUrl,
+  };
+
+  return info;
 }
