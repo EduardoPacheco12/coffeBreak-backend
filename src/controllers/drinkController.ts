@@ -6,3 +6,11 @@ export async function getDrinksCategory(req: Request, res: Response) {
 
   res.status(200).send(drinkCategories);
 }
+
+export async function getDrinksByCategory(req: Request, res: Response) {
+  const categoryId: number = Number(req.params.categoryId);
+
+  const drinks = await drinkService.getDrinksByCategory(categoryId);
+
+  res.status(200).send(drinks);
+}
