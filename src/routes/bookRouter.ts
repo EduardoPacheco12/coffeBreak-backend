@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getBooksCategory } from "../controllers/bookControllers.js";
+import { getBooksByCategory, getBooksCategory } from "../controllers/bookControllers.js";
 import { validateTokenMiddleware } from "../middlewares/validateToken.js";
 
 const router = Router();
 
 router.get("/coffebreak/books/category/list", validateTokenMiddleware, getBooksCategory);
-router.get("/coffebreak/books/categorty/list/:categoryId", validateTokenMiddleware);
+router.get("/coffebreak/books/category/list/:categoryId", validateTokenMiddleware, getBooksByCategory);
 
 export default router;
