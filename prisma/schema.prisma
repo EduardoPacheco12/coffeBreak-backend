@@ -36,7 +36,6 @@ model books {
   id             Int            @id @default(autoincrement())
   name           String         @unique
   pictureUrl     String
-  description    String
   totalStock     Int
   price          Int
   bookCategory   bookCategories @relation(fields: [bookCategoryId], references: [id])
