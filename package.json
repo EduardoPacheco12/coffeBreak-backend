@@ -8,8 +8,11 @@
     "start": "ts-node src/server.ts",
     "dev-start": "dotenv -e .env.test nodemon src/server.ts",
     "test": "dotenv -e .env.test jest --no-cache -i",
-    "prisma": "prisma migrate dev",
-    "dev-prisma": "dotenv -e .env.test prisma migrate dev"
+    "prisma": "prisma db seed && prisma migrate dev",
+    "dev-prisma": "dotenv -e .env.test prisma db seed && dotenv -e .env.test prisma migrate dev"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
