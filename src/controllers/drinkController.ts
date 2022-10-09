@@ -14,3 +14,12 @@ export async function getDrinksByCategory(req: Request, res: Response) {
 
   res.status(200).send(drinks);
 }
+
+export async function addDrinkToCart(req: Request, res: Response) {
+  const drinkId: number = Number(req.params.drinkId);
+  const userId: number = res.locals.id;
+
+  await drinkService.addDrinkToCart(userId, drinkId);
+
+  res.sendStatus(201);
+}
