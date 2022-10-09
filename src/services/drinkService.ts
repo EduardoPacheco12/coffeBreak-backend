@@ -19,11 +19,11 @@ export async function getDrinksByCategory(categoryId: number) {
 }
 
 export async function addDrinkToCart(userId: number, drinkId: number) {
-  const verifyUser = drinkRepository.getUser(userId);
+  const verifyUser = await drinkRepository.getUser(userId);
   if (!verifyUser) {
     throw notFoundError("User not found");
   }
-  const verifyDrink = drinkRepository.getDrink(drinkId);
+  const verifyDrink = await drinkRepository.getDrink(drinkId);
   if (!verifyDrink) {
     throw notFoundError("Drink not found");
   }

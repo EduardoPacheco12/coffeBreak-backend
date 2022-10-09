@@ -14,3 +14,12 @@ export async function getBooksByCategory(req: Request, res: Response) {
 
   res.status(200).send(books);
 }
+
+export async function addBookToCart(req: Request, res: Response) {
+  const bookId: number = Number(req.params.bookId);
+  const userId: number = res.locals.id;
+
+  await bookService.addBookToCart(userId, bookId);
+
+  res.sendStatus(201);
+}
