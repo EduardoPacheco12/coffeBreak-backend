@@ -11,13 +11,15 @@ datasource db {
 }
 
 model users {
-  id         Int         @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
   name       String
-  email      String      @unique
+  email      String       @unique
   pictureUrl String
   password   String
   purchases  purchases[]
   rents      rents[]
+  drinkCarts drinkCarts[]
+  bookCarts  bookCarts[]
 }
 
 model drinkCategories {
@@ -41,6 +43,7 @@ model books {
   bookCategory   bookCategories @relation(fields: [bookCategoryId], references: [id])
   bookCategoryId Int
   rents          rents[]
+  bookCarts      bookCarts[]
 }
 
 model drinks {
@@ -52,6 +55,7 @@ model drinks {
   drinkCategory   drinkCategories @relation(fields: [drinkCategoryId], references: [id])
   drinkCategoryId Int
   purchases       purchases[]
+  drinkCarts      drinkCarts[]
 }
 
 model purchases {
@@ -75,4 +79,20 @@ model rents {
   returnDate DateTime? @db.Date
   rentPrice  Int
   delayFee   Int?
+}
+
+model drinkCarts {
+  id      Int    @id @default(autoincrement())
+  user    users  @relation(fields: [userId], references: [id])
+  userId  Int
+  drink   drinks @relation(fields: [drinkId], references: [id])
+  drinkId Int
+}
+
+model bookCarts {
+  id     Int   @id @default(autoincrement())
+  user   users @relation(fields: [userId], references: [id])
+  userId Int
+  book   books @relation(fields: [bookId], references: [id])
+  bookId Int
 }
