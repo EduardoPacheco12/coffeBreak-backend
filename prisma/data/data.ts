@@ -224,22 +224,21 @@ export const drinks = [
 export const books = [
   {
     name: "It - A Coisa",
-    pictureUrl:
-      "https://photos.enjoei.com.br/livro-it-a-coisa-stephen-king/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNzEzMTA3MS8zODEzNmU4ZGExNmM2YmRjN2MyNzYxOGU0Mzc2OTM1Yi5qcGc",
+    pictureUrl: "https://m.media-amazon.com/images/I/91g9Dvtf+jL.jpg",
     totalStock: 10,
     price: 2000,
     bookCategoryId: 1,
   },
   {
     name: "O Vilarejo",
-    pictureUrl: "https://i.zst.com.br/thumbs/12/2e/2c/1458073059.jpg",
+    pictureUrl: "https://m.media-amazon.com/images/I/81JaIN9NExL.jpg",
     totalStock: 10,
     price: 1500,
     bookCategoryId: 1,
   },
   {
     name: "Terror em Amityville",
-    pictureUrl: "https://lojasaraiva.vteximg.com.br/arquivos/ids/7150828-400-400/1009101771.jpg?v=637079073621800000",
+    pictureUrl: "https://m.media-amazon.com/images/I/91m2DLmsRRL.jpg",
     totalStock: 10,
     price: 1700,
     bookCategoryId: 1,
@@ -330,7 +329,7 @@ export const books = [
   },
   {
     name: "Cinderela",
-    pictureUrl: "https://cdnv2.moovin.com.br/editorarideel/imagens/produtos/det/fbde2de109.jpg",
+    pictureUrl: "https://m.media-amazon.com/images/I/71IEgnLPh9L.jpg",
     totalStock: 10,
     price: 1500,
     bookCategoryId: 5,
