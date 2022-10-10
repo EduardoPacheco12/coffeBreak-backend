@@ -60,6 +60,7 @@ export async function deleteBookCart(userId: number, bookId: number) {
   }
 
   const bookCart = await bookRepository.findBookCart(userId, bookId);
+  console.log(bookCart);
   if (!bookCart) {
     throw notFoundError("There is no such item in the user's cart");
   }
