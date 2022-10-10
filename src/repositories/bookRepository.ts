@@ -55,3 +55,14 @@ export async function updateStock(bookId: number, totalStock: number) {
     },
   });
 }
+
+export async function getBooksCart(userId: number) {
+  return await client.bookCarts.findMany({
+    where: {
+      userId,
+    },
+    select: {
+      book: true,
+    },
+  });
+}

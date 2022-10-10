@@ -23,3 +23,11 @@ export async function addBookToCart(req: Request, res: Response) {
 
   res.sendStatus(201);
 }
+
+export async function getBooksCart(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+
+  const booksCart = await bookService.getBooksCart(userId);
+
+  res.status(200).send(booksCart);
+}

@@ -36,3 +36,14 @@ export async function addBookToCart(userId: number, bookId: number) {
     throw conflictError("The stock of books has run out");
   }
 }
+
+export async function getBooksCart(userId: number) {
+  const userBooks = await bookRepository.getBooksCart(userId);
+  const bookCarts = [];
+
+  for (let i = 0; i < userBooks.length; i++) {
+    bookCarts.push(userBooks[i].book);
+  }
+
+  return bookCarts;
+}
