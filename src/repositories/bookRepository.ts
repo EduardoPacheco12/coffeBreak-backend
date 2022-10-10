@@ -66,3 +66,20 @@ export async function getBooksCart(userId: number) {
     },
   });
 }
+
+export async function findBookCart(userId: number, bookId: number) {
+  return await client.bookCarts.findFirst({
+    where: {
+      userId,
+      bookId,
+    },
+  });
+}
+
+export async function deleteBookCart(id: number) {
+  return await client.bookCarts.delete({
+    where: {
+      id,
+    },
+  });
+}

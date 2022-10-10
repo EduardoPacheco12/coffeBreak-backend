@@ -47,3 +47,22 @@ export async function getBooksCart(userId: number) {
 
   return booksCart;
 }
+
+export async function deleteBookCart(userId: number, bookId: number) {
+  const verifyUser = await bookRepository.getUser(userId);
+  if (!verifyUser) {
+    throw notFoundError("User not found");
+  }
+
+  const verifyDrink = await bookRepository.getBook(bookId);
+  if (!verifyDrink) {
+    throw notFoundError("Book not found");
+  }
+
+  const bookCart = await bookRepository.findBookCart(userId, bookId);
+  if (!bookCart) {
+    throw notFoundError("There is no such item in the user's cart");
+  }
+
+  await bookRepository.deleteBookCart(bookCart.id);
+}
