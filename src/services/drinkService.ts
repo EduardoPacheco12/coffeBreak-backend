@@ -41,3 +41,19 @@ export async function getDrinksCart(userId: number) {
 
   return drinksCart;
 }
+
+export async function deleteDrinkCart(userId: number, drinkId: number) {
+  const verifyUser = await drinkRepository.getUser(userId);
+  if (!verifyUser) {
+    throw notFoundError("User not found");
+  }
+
+  const verifyDrink = await drinkRepository.getDrink(drinkId);
+  if (!verifyDrink) {
+    throw notFoundError("Drink not found");
+  }
+
+  const drinkCart = await drinkRepository.findDrinkCart(userId, drinkId);
+
+  await drinkRepository.deleteDrinkCart(drinkCart.id);
+}

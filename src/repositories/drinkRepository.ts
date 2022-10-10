@@ -55,3 +55,20 @@ export async function getDrinksCart(userId: number) {
     },
   });
 }
+
+export async function findDrinkCart(userId: number, drinkId: number) {
+  return await client.drinkCarts.findFirst({
+    where: {
+      userId,
+      drinkId,
+    },
+  });
+}
+
+export async function deleteDrinkCart(id: number) {
+  return await client.drinkCarts.delete({
+    where: {
+      id,
+    },
+  });
+}

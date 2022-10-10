@@ -31,3 +31,12 @@ export async function getDrinksCart(req: Request, res: Response) {
 
   res.status(200).send(drinksCart);
 }
+
+export async function deleteDrinkCart(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const drinkId: number = Number(req.params.drinkId);
+
+  await drinkService.deleteDrinkCart(userId, drinkId);
+
+  res.sendStatus(204);
+}
