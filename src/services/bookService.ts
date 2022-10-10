@@ -31,7 +31,7 @@ export async function addBookToCart(userId: number, bookId: number) {
 
   if (verifyBook.totalStock > 0) {
     await bookRepository.addBookToCart(userId, bookId);
-    await bookRepository.updateStock(bookId, totalStock);
+    await bookRepository.downStock(bookId, totalStock);
   } else {
     throw conflictError("The stock of books has run out");
   }
@@ -54,8 +54,8 @@ export async function deleteBookCart(userId: number, bookId: number) {
     throw notFoundError("User not found");
   }
 
-  const verifyDrink = await bookRepository.getBook(bookId);
-  if (!verifyDrink) {
+  const verifyBook = await bookRepository.getBook(bookId);
+  if (!verifyBook) {
     throw notFoundError("Book not found");
   }
 
@@ -65,4 +65,5 @@ export async function deleteBookCart(userId: number, bookId: number) {
   }
 
   await bookRepository.deleteBookCart(bookCart.id);
+  await bookRepository.upStock(bookId, verifyBook.totalStock);
 }

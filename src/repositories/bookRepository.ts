@@ -45,7 +45,7 @@ export async function addBookToCart(userId: number, bookId: number) {
   });
 }
 
-export async function updateStock(bookId: number, totalStock: number) {
+export async function downStock(bookId: number, totalStock: number) {
   return await client.books.update({
     where: {
       id: bookId,
@@ -80,6 +80,17 @@ export async function deleteBookCart(id: number) {
   return await client.bookCarts.delete({
     where: {
       id,
+    },
+  });
+}
+
+export async function upStock(bookId: number, totalStock: number) {
+  return await client.books.update({
+    where: {
+      id: bookId,
+    },
+    data: {
+      totalStock: totalStock + 1,
     },
   });
 }

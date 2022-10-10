@@ -31,3 +31,12 @@ export async function getBooksCart(req: Request, res: Response) {
 
   res.status(200).send(booksCart);
 }
+
+export async function deleteBookCart(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const bookId: number = Number(req.params.bookId);
+
+  await bookService.deleteBookCart(userId, bookId);
+
+  res.sendStatus(204);
+}
