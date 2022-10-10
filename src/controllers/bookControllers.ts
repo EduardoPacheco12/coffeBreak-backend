@@ -18,7 +18,7 @@ export async function getBooksByCategory(req: Request, res: Response) {
 export async function addBookToCart(req: Request, res: Response) {
   const bookId: number = Number(req.params.bookId);
   const userId: number = res.locals.id;
-  const { rentedDays }: { rentedDays: number } = req.body;
+  const rentedDays: number = Number(req.body.rentedDays);
 
   await bookService.addBookToCart(userId, bookId, rentedDays);
 

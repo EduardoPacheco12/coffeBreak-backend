@@ -42,7 +42,7 @@ export async function getBooksCart(userId: number) {
   const booksCart = [];
 
   for (let i = 0; i < userBooks.length; i++) {
-    booksCart.push(userBooks[i].book);
+    booksCart.push({ ...userBooks[i].book, rentedDays: userBooks[i].rentedDays });
   }
 
   return booksCart;

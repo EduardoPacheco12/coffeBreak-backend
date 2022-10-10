@@ -63,6 +63,7 @@ export async function getBooksCart(userId: number) {
       userId,
     },
     select: {
+      rentedDays: true,
       book: true,
     },
   });
