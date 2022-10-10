@@ -30,3 +30,14 @@ export async function addDrinkToCart(userId: number, drinkId: number) {
 
   await drinkRepository.addDrinkToCart(userId, drinkId);
 }
+
+export async function getDrinksCart(userId: number) {
+  const userDrinks = await drinkRepository.getDrinksCart(userId);
+  const drinksCart = [];
+
+  for (let i = 0; i < userDrinks.length; i++) {
+    drinksCart.push(userDrinks[i].drink);
+  }
+
+  return drinksCart;
+}

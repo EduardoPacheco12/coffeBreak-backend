@@ -39,11 +39,11 @@ export async function addBookToCart(userId: number, bookId: number) {
 
 export async function getBooksCart(userId: number) {
   const userBooks = await bookRepository.getBooksCart(userId);
-  const bookCarts = [];
+  const booksCart = [];
 
   for (let i = 0; i < userBooks.length; i++) {
-    bookCarts.push(userBooks[i].book);
+    booksCart.push(userBooks[i].book);
   }
 
-  return bookCarts;
+  return booksCart;
 }

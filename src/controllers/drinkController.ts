@@ -23,3 +23,11 @@ export async function addDrinkToCart(req: Request, res: Response) {
 
   res.sendStatus(201);
 }
+
+export async function getDrinksCart(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+
+  const drinksCart = await drinkService.getDrinksCart(userId);
+
+  res.status(200).send(drinksCart);
+}

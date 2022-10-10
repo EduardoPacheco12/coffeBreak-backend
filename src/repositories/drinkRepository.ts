@@ -44,3 +44,14 @@ export async function addDrinkToCart(userId: number, drinkId: number) {
     },
   });
 }
+
+export async function getDrinksCart(userId: number) {
+  return await client.drinkCarts.findMany({
+    where: {
+      userId,
+    },
+    select: {
+      drink: true,
+    },
+  });
+}
