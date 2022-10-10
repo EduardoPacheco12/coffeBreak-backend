@@ -90,9 +90,10 @@ model drinkCarts {
 }
 
 model bookCarts {
-  id     Int   @id @default(autoincrement())
-  user   users @relation(fields: [userId], references: [id])
-  userId Int
-  book   books @relation(fields: [bookId], references: [id])
-  bookId Int
+  id         Int   @id @default(autoincrement())
+  user       users @relation(fields: [userId], references: [id])
+  userId     Int
+  book       books @relation(fields: [bookId], references: [id])
+  bookId     Int
+  rentedDays Int
 }

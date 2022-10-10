@@ -18,7 +18,7 @@ export async function getBooksByCategory(categoryId: number) {
   return books;
 }
 
-export async function addBookToCart(userId: number, bookId: number) {
+export async function addBookToCart(userId: number, bookId: number, rentedDays: number) {
   const verifyUser = await bookRepository.getUser(userId);
   if (!verifyUser) {
     throw notFoundError("User not found");
@@ -30,7 +30,7 @@ export async function addBookToCart(userId: number, bookId: number) {
   const totalStock = verifyBook.totalStock;
 
   if (verifyBook.totalStock > 0) {
-    await bookRepository.addBookToCart(userId, bookId);
+    await bookRepository.addBookToCart(userId, bookId, rentedDays);
     await bookRepository.downStock(bookId, totalStock);
   } else {
     throw conflictError("The stock of books has run out");

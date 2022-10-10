@@ -36,11 +36,12 @@ export async function getBook(bookId: number) {
   });
 }
 
-export async function addBookToCart(userId: number, bookId: number) {
+export async function addBookToCart(userId: number, bookId: number, rentedDays: number) {
   return await client.bookCarts.create({
     data: {
       userId,
       bookId,
+      rentedDays,
     },
   });
 }
