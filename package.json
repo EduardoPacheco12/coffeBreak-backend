@@ -5,9 +5,11 @@
   "type":"module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": " npm start",
-    "dev:start": "dotenv -e .env.development nodemon src/server.js"
+    "dev:start": "dotenv -e .env.development nodemon src/server.js",
+    "dev:migration generate": "dotenv -e .env.development npx prisma migrate generate",
+    "dev:migration": "dotenv -e .env.development npx prisma migrate dev",
+    "dev:studio": "dotenv -e .env.development npx prisma studio"
   },
   "keywords": [],
   "author": "",
